@@ -1,28 +1,18 @@
-import axios from "axios";
+import axios from "axios"; // ✅ Use axios directly
 
-const API_BASE_URL = "http://localhost:8080/api"; // Change this if needed
+const API_BASE_URL = "http://localhost:3000/api";
 
-// Fetch all tours
-export const fetchTours = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/tours`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching tours:", error);
-    return [];
-  }
+
+// Register user
+export const registerUser = async ({ username, email, password, role }) => {
+  const response = await axios.post(`${API_BASE_URL}/auth/signup`, {
+    username, email, password, role,
+  });
+  return response.data;
 };
 
-// User login request
+// Login user
 export const loginUser = async (email, password) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/auth/login`, {
-      email,
-      password,
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Login failed:", error);
-    throw error;
-  }
+  const response = await axios.post(`${API_BASE_URL}/auth/login`, { email, password });
+  return response.data;
 };
