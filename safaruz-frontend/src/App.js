@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Booking from "./pages/Booking";
 import TourDetail from "./pages/TourDetail";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 // Components
@@ -38,7 +39,7 @@ function App() {
             <Route path="/tours" element={<Tours />} />
             <Route path="/hotels" element={<Hotels />} />
             <Route path="/restaurants" element={<Restaurants />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/booking" element={<Booking />} />
