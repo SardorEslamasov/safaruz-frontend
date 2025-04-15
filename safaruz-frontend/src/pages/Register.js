@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/api";
 import { AuthContext } from "../context/AuthContext";
@@ -22,43 +21,10 @@ const Register = () => {
       navigate("/");
     } catch (err) {
       setError("Registration failed. Please try again.");
-=======
-import { useNavigate } from "react-router-dom";
-import { registerUser } from "../services/authService";
-import { AuthContext } from "../context/AuthContext";
-
-const Register = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await registerUser(formData);
-      login(data.user); // Save user in context
-      localStorage.setItem("token", data.token); // Save JWT
-      navigate("/profile"); // Redirect to profile
-    } catch (err) {
-      alert("Registration failed: " + err.response?.data?.message || err.message);
->>>>>>> 9d7c559a0a617ee5ec0cfd32c1320697ed0f1ceb
     }
   };
 
   return (
-<<<<<<< HEAD
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-200 p-6">
       <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
         <h2 className="mb-6 text-center text-3xl font-bold text-green-700">
@@ -131,36 +97,6 @@ const Register = () => {
         </p>
       </div>
     </div>
-=======
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={formData.username}
-        onChange={handleChange}
-        required
-      /><br />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      /><br />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-      /><br />
-      <button type="submit">Register</button>
-    </form>
->>>>>>> 9d7c559a0a617ee5ec0cfd32c1320697ed0f1ceb
   );
 };
 
