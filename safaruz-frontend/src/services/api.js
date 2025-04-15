@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; // ✅ Use axios directly
 
 // Base URL of your backend
 const API_BASE_URL = "http://localhost:5001/api";
