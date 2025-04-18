@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 /* Remove @tailwind lines */
 .App {
   text-align: center;
@@ -37,3 +39,4 @@
     transform: rotate(360deg);
   }
 }
+>>>>>>> 9d7c559a0a617ee5ec0cfd32c1320697ed0f1ceb

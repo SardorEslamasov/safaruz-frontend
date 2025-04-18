@@ -10,47 +10,36 @@ import Restaurants from "./pages/Restaurants";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Booking from "./pages/Booking";
-import TourDetail from "./pages/TourDetail";
-import PrivateRoute from "./components/PrivateRoute";
+import CityDetails from "./pages/CityDetails";
 
-
-// Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Context Providers
-import { AuthProvider } from "./context/AuthContext";
-import { TourProvider } from "./context/TourContext";
 
-// Styles
-import "./App.css";
-import "./styles/global.css";
 
 function App() {
   return (
-    <AuthProvider>
-      <TourProvider>
-        <Router>
-          <Header />
+    <div className="min-h-screen bg-gray-100">
+      <Router>
+        <Header />
+
+        <main className="p-4">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/destinations" element={<Destinations />} />
             <Route path="/tours" element={<Tours />} />
             <Route path="/hotels" element={<Hotels />} />
             <Route path="/restaurants" element={<Restaurants />} />
-            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
+            <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/tours/:id" element={<TourDetail />} />
-            {/* 404 Route */}
-            <Route path="*" element={<h2>404 - Page Not Found</h2>} />
+            <Route path="/cities/:cityName" element={<CityDetails />} />
           </Routes>
-          <Footer />
-        </Router>
-      </TourProvider>
-    </AuthProvider>
+        </main>
+
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
