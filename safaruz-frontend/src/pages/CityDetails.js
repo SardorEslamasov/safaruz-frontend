@@ -51,8 +51,6 @@ const CityPage = () => {
       </h1>
       {renderSection("Historical Places", historicalPlaces)}
       {renderSection("Recreational Places", recreations)}
-      {renderSection("Hotels", hotels)}
-      {renderSection("Restaurants", restaurants)}
     </div>
   );
 };

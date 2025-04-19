@@ -34,6 +34,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/cities/:cityName" element={<CityDetails />} />
+            <Route path="/hotels" element={<Hotels />} />
+            <Route path="/restaurants" element={<Restaurants />} />
+            <Route path="/tours" element={<Tours />} />
           </Routes>
         </main>
 
