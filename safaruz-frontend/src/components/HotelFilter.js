@@ -1,20 +1,12 @@
 import React from "react";
 
-const RestaurantsFilter = ({
-  location,
-  setLocation,
-  rating,
-  setRating,
-  type,
-  setType,
-  onFilter,
-}) => {
+const HotelFilter = ({ location, setLocation, rating, setRating, type, setType, onFilter }) => {
   return (
     <div className="flex flex-wrap gap-4 justify-center mb-8">
       <select
         value={location}
         onChange={(e) => setLocation(e.target.value)}
-        className="bg-secondary text-lightText border border-accent p-2 rounded w-48"
+        className="p-3 bg-secondary text-light border border-light rounded-md w-56"
       >
         <option value=""> All Locations</option>
         <option value="Tashkent">Tashkent</option>
@@ -25,7 +17,7 @@ const RestaurantsFilter = ({
       <select
         value={rating}
         onChange={(e) => setRating(e.target.value)}
-        className="bg-secondary text-lightText border border-accent p-2 rounded w-48"
+        className="p-3 bg-secondary text-light border border-light rounded-md w-56"
       >
         <option value=""> All Ratings</option>
         <option value="5">5 Stars</option>
@@ -36,22 +28,23 @@ const RestaurantsFilter = ({
       <select
         value={type}
         onChange={(e) => setType(e.target.value)}
-        className="bg-secondary text-lightText border border-accent p-2 rounded w-48"
+        className="p-3 bg-secondary text-light border border-light rounded-md w-56"
       >
         <option value=""> All Types</option>
-        <option value="Cafe">Cafe</option>
-        <option value="Fine Dining">Fine Dining</option>
-        <option value="Fast Food">Fast Food</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Luxury">Luxury Hotel</option>
+        <option value="Motel">Motel</option>
+        <option value="Guesthouse">Guesthouse</option>
       </select>
 
       <button
         onClick={onFilter}
-        className="bg-accent hover:bg-yellow-400 text-black px-4 py-2 rounded shadow-md transition"
+        className="bg-accent text-primary px-6 py-3 rounded-md hover:bg-highlight transition"
       >
-        Apply Filters
+         Apply Filters
       </button>
     </div>
   );
 };
 
-export default RestaurantsFilter;
+export default HotelFilter;

@@ -6,32 +6,41 @@ const Header = () => {
   const { isAuthenticated, logout } = useContext(AuthContext);
 
   return (
-    <header className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
-        <Link to="/" className="text-2xl font-bold text-blue-600">
-          SafarUz
-        </Link>
+    <header className="bg-gray-900 text-white shadow-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <Link to="/" className="flex items-center gap-3">
+        <img
+          src="/images/safaruz-logo.png"
+          alt="SafarUz Logo"
+          className="h-10 w-auto"
+        />
+        <span className="text-2xl font-bold text-yellow-400">SafarUz</span>
+      </Link>
 
-        <nav className="space-x-4 flex items-center">
-          <Link to="/tours" className="text-gray-700 hover:text-blue-600">Tours</Link>
-          <Link to="/cities" className="text-gray-700 hover:text-blue-600">Cities</Link>
-          <Link to="/hotels" className="text-gray-700 hover:text-blue-600">Hotels</Link>
-          <Link to="/restaurants" className="text-gray-700 hover:text-blue-600">Restaurants</Link>
+
+        <nav className="space-x-6 text-sm md:text-base font-medium flex items-center">
+          <Link to="/tours" className="hover:text-yellow-300 transition">Tours</Link>
+          <Link to="/hotels" className="hover:text-yellow-300 transition">Hotels</Link>
+          <Link to="/restaurants" className="hover:text-yellow-300 transition">Restaurants</Link>
 
           {isAuthenticated ? (
             <>
-              <Link to="/profile" className="text-gray-700 hover:text-blue-600">Profile</Link>
+              <Link to="/profile" className="hover:text-yellow-300 transition">Profile</Link>
               <button
                 onClick={logout}
-                className="ml-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                className="ml-3 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md transition"
               >
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</Link>
-              <Link to="/register" className="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50">Sign Up</Link>
+              <Link to="/login" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-4 py-2 rounded-md transition">
+                Login
+              </Link>
+              <Link to="/register" className="border border-yellow-400 text-yellow-400 px-4 py-2 rounded-md hover:bg-yellow-600 hover:text-white transition">
+                Sign Up
+              </Link>
             </>
           )}
         </nav>

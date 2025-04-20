@@ -5,17 +5,14 @@ import RestaurantsFilter from "../components/RestaurantsFilter";
 
 const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-
-  useEffect(() => {
-    fetchRestaurants();
-  }, [minPrice, maxPrice]);
+  const [location, setLocation] = useState("");
+  const [rating, setRating] = useState("");
+  const [type, setType] = useState("");
 
   const fetchRestaurants = async () => {
     try {
       const res = await axios.get("http://localhost:5001/restaurants", {
-        params: { minPrice, maxPrice },
+        params: { location, rating, type },
       });
       setRestaurants(res.data);
     } catch (err) {
@@ -23,24 +20,38 @@ const Restaurants = () => {
     }
   };
 
+  useEffect(() => {
+    fetchRestaurants();
+  }, [location, rating, type]);
+
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Discover Restaurants</h1>
+    <div className="min-h-screen px-6 py-10 bg-primary text-white">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold text-center text-accent mb-10">
+           Discover the Best Restaurants
+        </h1>
 
-      {/* Filters */}
-      <RestaurantsFilter
-        minPrice={minPrice}
-        maxPrice={maxPrice}
-        setMinPrice={setMinPrice}
-        setMaxPrice={setMaxPrice}
-        onFilter={fetchRestaurants}
-      />
+        <RestaurantsFilter
+          location={location}
+          setLocation={setLocation}
+          rating={rating}
+          setRating={setRating}
+          type={type}
+          setType={setType}
+          onFilter={fetchRestaurants}
+        />
 
-      {/* Restaurants Grid */}
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {restaurants.map((restaurant) => (
-          <RestaurantsCard key={restaurant.id} restaurant={restaurant} />
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          {restaurants.length ? (
+            restaurants.map((restaurant) => (
+              <RestaurantsCard key={restaurant.id} restaurant={restaurant} />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-lightText">
+              No restaurants match your filters.
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -24,64 +24,60 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200 p-6">
-      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
-        <h2 className="mb-6 text-center text-3xl font-bold text-blue-700">
-          Welcome Back <span className="text-2xl">👋</span>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-6">
+      <div className="w-full max-w-md rounded-xl bg-[#1f1f1f] p-8 shadow-xl">
+        <h2 className="mb-6 text-center text-3xl font-bold text-yellow-400">
+          Welcome Back 
         </h2>
 
         {error && (
-          <p className="mb-4 text-center text-sm text-red-600">{error}</p>
+          <p className="mb-4 text-center text-sm text-red-400">{error}</p>
         )}
 
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-300">
               Email Address
             </label>
             <input
               type="email"
-              required
+              autoComplete="off"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
+              required
+              className="mt-1 w-full rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-white placeholder-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-300">
               Password
             </label>
             <input
               type="password"
-              required
+              autoComplete="off"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-300"
-              placeholder="********"
+              required
+              className="mt-1 w-full rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-white placeholder-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400"
+              placeholder="Your password"
             />
-          </div>
-
-          <div className="text-right text-sm">
-            <Link to="/forgot" className="text-blue-600 hover:underline">
-              Forgot password?
-            </Link>
           </div>
 
           <button
             type="submit"
-            className="w-full rounded-md bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
+            className="w-full rounded-md bg-yellow-400 px-6 py-3 font-semibold text-black transition hover:bg-yellow-300"
           >
             Login
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
+        <p className="mt-6 text-center text-sm text-gray-400">
+          Don’t have an account?{" "}
           <Link
             to="/register"
-            className="text-blue-600 hover:underline font-medium"
+            className="text-yellow-400 hover:underline font-medium"
           >
             Register here
           </Link>

@@ -10,7 +10,7 @@ import Restaurants from "./pages/Restaurants";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import CityDetails from "./pages/CityDetails";
+import CityDetails from "./pages/CityPage";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";

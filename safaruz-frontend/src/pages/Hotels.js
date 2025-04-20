@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HotelCard from "../components/HotelCard";
+import HotelFilter from "../components/HotelFilter";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-
-  useEffect(() => {
-    fetchHotels();
-  }, [minPrice, maxPrice]);
+  const [location, setLocation] = useState("");
+  const [rating, setRating] = useState("");
+  const [type, setType] = useState("");
 
   const fetchHotels = async () => {
     try {
       const res = await axios.get("http://localhost:5001/hotels", {
-        params: {
-          minPrice,
-          maxPrice,
-        },
+        params: { location, rating, type },
       });
       setHotels(res.data);
     } catch (err) {
@@ -25,39 +20,36 @@ const Hotels = () => {
     }
   };
 
+  useEffect(() => {
+    fetchHotels();
+  }, [location, rating, type]);
+
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Explore Hotels</h1>
+    <div className="min-h-screen bg-primary text-light px-6 py-10">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold text-center text-accent mb-10">
+           Explore Hotels in Uzbekistan
+        </h1>
 
-      {/* Filters */}
-      <div className="flex gap-4 mb-8">
-        <input
-          type="number"
-          placeholder="Min Price"
-          value={minPrice}
-          onChange={(e) => setMinPrice(e.target.value)}
-          className="border p-2 rounded w-40"
+        <HotelFilter
+          location={location}
+          setLocation={setLocation}
+          rating={rating}
+          setRating={setRating}
+          type={type}
+          setType={setType}
+          onFilter={fetchHotels}
         />
-        <input
-          type="number"
-          placeholder="Max Price"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}
-          className="border p-2 rounded w-40"
-        />
-        <button
-          onClick={fetchHotels}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Filter
-        </button>
-      </div>
 
-      {/* Hotels Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {hotels.map((hotel) => (
-          <HotelCard key={hotel.id} hotel={hotel} />
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          {hotels.length === 0 ? (
+            <p className="text-gray-400 col-span-full text-center">
+              No hotels match your filters.
+            </p>
+          ) : (
+            hotels.map((hotel) => <HotelCard key={hotel.id} hotel={hotel} />)
+          )}
+        </div>
       </div>
     </div>
   );
