@@ -39,7 +39,7 @@ const CityPage = () => {
             <p className="text-gray-400 text-sm">{item.description || "No description available."}</p>
           </div>
         ))}
-      </div>
+      </div> hshshs
     </section>
   );
 
