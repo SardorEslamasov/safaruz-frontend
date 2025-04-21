@@ -16,7 +16,7 @@ const Hotels = () => {
       });
       setHotels(res.data);
     } catch (err) {
-      console.error("Error fetching hotels", err);
+      console.error("Error fetching hotels", err); 
     }
   };
 
