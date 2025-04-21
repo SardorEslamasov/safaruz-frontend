@@ -10,6 +10,6 @@ root.render(
   <React.StrictMode>
       <AuthProvider>
         <App />
-      </AuthProvider>
+      </AuthProvider> kkk
   </React.StrictMode>
 );
