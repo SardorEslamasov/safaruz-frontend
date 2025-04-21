@@ -50,7 +50,7 @@ const Login = () => {
             />
           </div>
 
-          <div> hshshs
+          <div> 
             <label className="block text-sm font-medium text-gray-300">
               Password
             </label>
